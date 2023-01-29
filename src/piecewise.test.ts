@@ -13,7 +13,7 @@ describe("piecewise#evalPiecewise", () => {
         });
 
         it("evaluates zero", () => {
-            expect(piecewise.evalPiecewise(0, abs)).toEqual([0, 0]);
+            expect(piecewise.evalPiecewise(0, abs)).toEqual([0]);
         });
     });
 
@@ -23,7 +23,7 @@ describe("piecewise#evalPiecewise", () => {
         });
 
         it("evaluates at 1", () => {
-            expect(piecewise.evalPiecewise(1, doubleRamp)).toEqual([0, 0]);
+            expect(piecewise.evalPiecewise(1, doubleRamp)).toEqual([0]);
         });
 
         it("evaluates in between -1 and 1 exclusive", () => {
@@ -31,7 +31,7 @@ describe("piecewise#evalPiecewise", () => {
         });
 
         it("evaluates at -1", () => {
-            expect(piecewise.evalPiecewise(-1, doubleRamp)).toEqual([0, 0]);
+            expect(piecewise.evalPiecewise(-1, doubleRamp)).toEqual([0]);
         });
 
         it("evaluates at values less than -1", () => {

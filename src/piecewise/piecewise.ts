@@ -1,6 +1,13 @@
 // to consider; split out piecewise into multi and single, to handle eval return
-export type Piecewise<T> = {
+export type Piecewise<T> = SingleValuedPiecewise<T> | MultivaluedPiecewise<T>;
+
+export type SingleValuedPiecewise<T> = {
     kind: "Piecewise",
+    value: Piece<T>[]
+};
+
+export type MultivaluedPiecewise<T> = {
+    kind: "MultivaluedPiecewise",
     value: Piece<T>[]
 };
 
@@ -57,6 +64,8 @@ function evalPieceValue<T>(x: T, value: PieceValue<T>): T[] {
             return [value.eval(x)]
         case "Piecewise":
             return evalPiecewise(x, value);
+        case "MultivaluedPiecewise":
+            return evalPiecewise(x, value);
     }
 }
 
@@ -68,14 +77,21 @@ export function evalPiecewise<T>(x: T, piecewise: Piecewise<T>): T[] {
         values = values.concat(evalPieceValue(x, piece.value));
     });
 
-    return values;
+    switch (piecewise.kind) {
+        case "Piecewise":
+            return [...new Set(values)];
+        case "MultivaluedPiecewise":
+            return values;
+    }
 }
 
-function texifyPieceValue<T>(value: PieceValue<T>) {
+function texifyPieceValue<T>(value: PieceValue<T>): string {
     switch (value.kind) {
         case "Expression":
             return value.value;
         case "Piecewise":
+            return texifyPiecewise(value);
+        case "MultivaluedPiecewise":
             return texifyPiecewise(value);
     }
 }
