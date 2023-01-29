@@ -18,14 +18,12 @@ export const doubleRamp: Piecewise<number> = {
                     eval: (x) => x
                 },
                 left: {
-                    kind: "Expression",
-                    value: "-\\infty",
-                    eval: (x) => -Infinity,
+                    kind: "Constant",
+                    value: -Infinity,
                 },
                 right: {
-                    kind: "Expression",
-                    value: "-1",
-                    eval: (x) => -1,
+                    kind: "Constant",
+                    value: -1,
                 },
                 leftInclusive: false,
                 rightInclusive: true
@@ -39,9 +37,8 @@ export const doubleRamp: Piecewise<number> = {
                     {
                         kind: "Piece",
                         value: [{
-                            kind: "Expression",
-                            value: "0",
-                            eval: (x) => 0,
+                            kind: "Constant",
+                            value: 0
                         }],
                         condition: [{
                             kind: "Interval",
@@ -51,14 +48,12 @@ export const doubleRamp: Piecewise<number> = {
                                 eval: (x) => x
                             },
                             left: {
-                                kind: "Expression",
-                                value: "-\\infty",
-                                eval: (x) => -Infinity,
+                                kind: "Constant",
+                                value: -Infinity
                             },
                             right: {
-                                kind: "Expression",
-                                value: "1",
-                                eval: (x) => 1,
+                                kind: "Constant",
+                                value: 1
                             },
                             leftInclusive: false,
                             rightInclusive: true
@@ -79,14 +74,12 @@ export const doubleRamp: Piecewise<number> = {
                                 eval: (x) => x
                             },
                             left: {
-                                kind: "Expression",
-                                value: "1",
-                                eval: (x) => 1,
+                                kind: "Constant",
+                                value: 1
                             },
                             right: {
-                                kind: "Expression",
-                                value: "\\infty",
-                                eval: (x) => Infinity,
+                                kind: "Constant",
+                                value: Infinity
                             },
                             leftInclusive: true,
                             rightInclusive: false
@@ -102,14 +95,12 @@ export const doubleRamp: Piecewise<number> = {
                     eval: (x) => x
                 },
                 left: {
-                    kind: "Expression",
-                    value: "-1",
-                    eval: (x) => -1,
+                    kind: "Constant",
+                    value: -1
                 },
                 right: {
-                    kind: "Expression",
-                    value: "\\infty",
-                    eval: (x) => Infinity,
+                    kind: "Constant",
+                    value: Infinity
                 },
                 leftInclusive: true,
                 rightInclusive: false

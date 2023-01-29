@@ -1,9 +1,17 @@
 import { PieceCondition, PieceValue, Piecewise } from "./piecewise";
 
+function texify(value: any) {
+    return value
+        .toString()
+        .replace("Infinity", "\\infty");
+}
+
 function texifyPieceValue<T>(value: PieceValue<T>): string {
     switch (value.kind) {
         case "Expression":
-            return value.value;
+            return texify(value.value);
+        case "Constant":
+            return texify(value.value as string);
         case "Piecewise":
             return texifyPiecewise(value);
         case "MultivaluedPiecewise":

@@ -12,7 +12,7 @@ function App() {
         <p>
             The absolute value of 0 is {JSON.stringify(evalPiecewise(0, abs))}
         </p>
-        {/* <p>
+        <p>
             The absolute value of 1 is {JSON.stringify(evalPiecewise(1, abs))}
         </p>
         <p>
@@ -23,7 +23,7 @@ function App() {
             <MathJax>
                 {"$$" + texifyPiecewise(doubleRamp) + "$$"}
             </MathJax>
-        </MathJaxContext> */}
+        </MathJaxContext>
     </header>
   );
 }

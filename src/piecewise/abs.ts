@@ -19,14 +19,12 @@ export const abs: Piecewise<number> = {
                     eval: (x) => x
                 },
                 left: {
-                    kind: "Expression",
-                    value: "0",
-                    eval: (x) => 0
+                    kind: "Constant",
+                    value: 0,
                 },
                 right: {
-                    kind: "Expression",
-                    value: "\\infty",
-                    eval: (x) => Infinity
+                    kind: "Constant",
+                    value: Infinity,
                 },
                 leftInclusive: true,
                 rightInclusive: false
@@ -47,14 +45,12 @@ export const abs: Piecewise<number> = {
                     eval: (x) => x
                 },
                 left: {
-                    kind: "Expression",
-                    value: "-\\infty",
-                    eval: (x) => -Infinity
+                    kind: "Constant",
+                    value: -Infinity
                 },
                 right: {
-                    kind: "Expression",
-                    value: "0",
-                    eval: (x) => 0
+                    kind: "Constant",
+                    value: 0
                 },
                 leftInclusive: false,
                 rightInclusive: true

@@ -21,6 +21,9 @@ type MultivaluedPiecewise<T> = {
 
 /**
  * A piece should always contain two things: a value, and a condition.
+ * If a function is multivalued, it may return several values.
+ * Any piecewise object can have multiple conditions; they're interpreted
+ * as intersections.
  */
 type Piece<T> = {
     kind: "Piece",
@@ -28,14 +31,19 @@ type Piece<T> = {
     condition: PieceCondition<T>[]
 };
 
-export type PieceValue<T> = Expression<T> | Piecewise<T>;
+export type PieceValue<T> = Expression<T> | Constant<T> | Piecewise<T>;
 export type PieceCondition<T> = Interval<T>; // TOOD: support piecewise conditions
 
 type Expression<T> = {
     kind: "Expression",
     // provide the string representation of the executed expression
     value: string,
-    eval: (value: T) => T
+    eval: ((value: T) => T)
+};
+
+type Constant<T> = {
+    kind: "Constant",
+    value: T
 };
 
 type Interval<T> = {

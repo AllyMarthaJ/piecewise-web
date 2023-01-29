@@ -26,6 +26,8 @@ function evalPieceValue<T>(x: T, value: PieceValue<T>): T[] {
     switch (value.kind) {
         case "Expression":
             return [value.eval(x)];
+        case "Constant":
+            return [value.value];
         case "Piecewise":
             return evalPiecewise(x, value);
         case "MultivaluedPiecewise":
