@@ -5,6 +5,7 @@ import { abs } from './piecewise/examples/abs';
 import { MathJax, MathJaxContext } from "better-react-mathjax";
 import { evalPiecewise } from './piecewise/eval';
 import { texifyPiecewise } from './piecewise/texify';
+import { flattenPiecewise } from './piecewise/flatten';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
 
         <MathJaxContext>
             <MathJax>
-                {"$$" + texifyPiecewise(doubleRamp) + "$$"}
+                {"$$" + texifyPiecewise(flattenPiecewise(doubleRamp)) + "$$"}
             </MathJax>
         </MathJaxContext>
     </header>

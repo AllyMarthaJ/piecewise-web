@@ -12,7 +12,6 @@ type SingleValuedPiecewise<T> = {
 /**
  * Where possible denote all piecewise objects that are set/multi-valued
  * as multivalued piecewise objects.
- * This means that their output loses some guarantees which is unfortunate.
  */
 type MultivaluedPiecewise<T> = {
     kind: "MultivaluedPiecewise",

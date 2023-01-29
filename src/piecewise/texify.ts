@@ -47,7 +47,7 @@ function texifyPiece<T>(piece: Piece<T>) {
     if (piece.value.length > 1) {
         const values = piece.value.map(texifyPieceValue);
 
-        pieceTex = `\\[${values.join(", ")}\\]`;
+        pieceTex = `\\left\\{${values.join(", ")}\\right\\}`;
     } else {
         pieceTex = texifyPieceValue(piece.value[0]);
     }
