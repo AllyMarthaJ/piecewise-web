@@ -34,9 +34,12 @@ export type Piece<T> = {
 export type PieceValue<T> = Expression<T> | Constant<T> | Piecewise<T>;
 export type PieceCondition<T> = Interval<T>;
 
+/**
+ * An expression should offer a TeX representation (i.e. a serialised
+ * state), and an evaluation function.
+ */
 type Expression<T> = {
     kind: "Expression",
-    // provide the string representation of the executed expression
     value: string,
     eval: ((value: T) => T)
 };
@@ -46,11 +49,16 @@ type Constant<T> = {
     value: T
 };
 
+/**
+ * Provide a way to do interval comparisons with a given input
+ * value, an infimum and supremum. hasMin and hasMax determine
+ * whether the the min/max exists in the set, respectively.
+ */
 type Interval<T> = {
     kind: "Interval",
     value: PieceValue<T>,
-    left: PieceValue<T>,
-    right: PieceValue<T>,
-    leftInclusive: boolean,
-    rightInclusive: boolean,
+    inf: PieceValue<T>,
+    sup: PieceValue<T>,
+    hasMin: boolean,
+    hasMax: boolean,
 };

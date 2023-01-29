@@ -4,19 +4,19 @@ function evalPieceCondition<T>(x: T, cond: PieceCondition<T>): boolean {
     switch (cond.kind) {
         case "Interval":
             const targetValues = evalPieceValue(x, cond.value);
-            const leftValues = evalPieceValue(x, cond.left);
-            const rightValues = evalPieceValue(x, cond.right);
+            const infValues = evalPieceValue(x, cond.inf);
+            const supValues = evalPieceValue(x, cond.sup);
 
-            if (targetValues.length !== 1 || leftValues.length !== 1 || rightValues.length !== 1) {
-                throw new Error("Could not reconcile multivalued piecewise object");
+            if (targetValues.length !== 1 || infValues.length !== 1 || supValues.length !== 1) {
+                throw new Error("Multivalued piecewise object: could not reconcile bounds or input.");
             }
 
             const target = targetValues[0];
-            const left = leftValues[0];
-            const right = rightValues[0];
+            const inf = infValues[0];
+            const sup = supValues[0];
 
-            const matchLeft = cond.leftInclusive ? (target >= left) : (target > left);
-            const matchRight = cond.rightInclusive ? (target <= right) : (target < right);
+            const matchLeft = cond.hasMin ? (target >= inf) : (target > inf);
+            const matchRight = cond.hasMax ? (target <= sup) : (target < sup);
 
             return matchLeft && matchRight;
     }

@@ -33,11 +33,11 @@ function texifyPieceCondition<T>(cond: PieceCondition<T>) {
 
             // bounds of interval
             tex += " \\in ";
-            tex += cond.leftInclusive ? "\\left[" : "\\left(";
-            tex += texifyPieceValue(cond.left);
+            tex += cond.hasMin ? "\\left[" : "\\left(";
+            tex += texifyPieceValue(cond.inf);
             tex += ", ";
-            tex += texifyPieceValue(cond.right);
-            tex += cond.rightInclusive ? "\\right]" : "\\right)";
+            tex += texifyPieceValue(cond.sup);
+            tex += cond.hasMax ? "\\right]" : "\\right)";
     }
     return tex;
 }

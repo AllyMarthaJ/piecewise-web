@@ -17,16 +17,16 @@ export const doubleRamp: Piecewise<number> = {
                     value: "x",
                     eval: (x) => x
                 },
-                left: {
+                inf: {
                     kind: "Constant",
                     value: -Infinity,
                 },
-                right: {
+                sup: {
                     kind: "Constant",
                     value: -1,
                 },
-                leftInclusive: false,
-                rightInclusive: true
+                hasMin: false,
+                hasMax: true
             }]
         },
         {
@@ -47,16 +47,16 @@ export const doubleRamp: Piecewise<number> = {
                                 value: "x",
                                 eval: (x) => x
                             },
-                            left: {
+                            inf: {
                                 kind: "Constant",
                                 value: -Infinity
                             },
-                            right: {
+                            sup: {
                                 kind: "Constant",
                                 value: 1
                             },
-                            leftInclusive: false,
-                            rightInclusive: true
+                            hasMin: false,
+                            hasMax: true
                         }]
                     },
                     {
@@ -73,16 +73,16 @@ export const doubleRamp: Piecewise<number> = {
                                 value: "x",
                                 eval: (x) => x
                             },
-                            left: {
+                            inf: {
                                 kind: "Constant",
                                 value: 1
                             },
-                            right: {
+                            sup: {
                                 kind: "Constant",
                                 value: Infinity
                             },
-                            leftInclusive: true,
-                            rightInclusive: false
+                            hasMin: true,
+                            hasMax: false
                         }]
                     }
                 ]
@@ -94,16 +94,16 @@ export const doubleRamp: Piecewise<number> = {
                     value: "x",
                     eval: (x) => x
                 },
-                left: {
+                inf: {
                     kind: "Constant",
                     value: -1
                 },
-                right: {
+                sup: {
                     kind: "Constant",
                     value: Infinity
                 },
-                leftInclusive: true,
-                rightInclusive: false
+                hasMin: true,
+                hasMax: false
             }]
         }
     ]
