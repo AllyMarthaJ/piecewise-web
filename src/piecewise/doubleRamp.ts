@@ -10,7 +10,7 @@ export const doubleRamp: Piecewise<number> = {
                 value: "-x - 1",
                 eval: (x) => -x-1
             },
-            condition: {
+            condition: [{
                 kind: "Interval",
                 value: {
                     kind: "Expression",
@@ -29,7 +29,7 @@ export const doubleRamp: Piecewise<number> = {
                 },
                 leftInclusive: false,
                 rightInclusive: true
-            }
+            }]
         },
         {
             kind: "Piece",
@@ -43,7 +43,7 @@ export const doubleRamp: Piecewise<number> = {
                             value: "0",
                             eval: (x) => 0,
                         },
-                        condition: {
+                        condition: [{
                             kind: "Interval",
                             value: {
                                 kind: "Expression",
@@ -62,7 +62,7 @@ export const doubleRamp: Piecewise<number> = {
                             },
                             leftInclusive: false,
                             rightInclusive: true
-                        }
+                        }]
                     },
                     {
                         kind: "Piece",
@@ -71,7 +71,7 @@ export const doubleRamp: Piecewise<number> = {
                             value: "x - 1",
                             eval: (x) => x - 1
                         },
-                        condition: {
+                        condition: [{
                             kind: "Interval",
                             value: {
                                 kind: "Expression",
@@ -90,11 +90,11 @@ export const doubleRamp: Piecewise<number> = {
                             },
                             leftInclusive: true,
                             rightInclusive: false
-                        }
+                        }]
                     }
                 ]
             },
-            condition: {
+            condition: [{
                 kind: "Interval",
                 value: {
                     kind: "Expression",
@@ -113,7 +113,7 @@ export const doubleRamp: Piecewise<number> = {
                 },
                 leftInclusive: true,
                 rightInclusive: false
-            }
+            }]
         }
     ]
 }

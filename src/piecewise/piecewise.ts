@@ -1,12 +1,12 @@
 // to consider; split out piecewise into multi and single, to handle eval return
 export type Piecewise<T> = SingleValuedPiecewise<T> | MultivaluedPiecewise<T>;
 
-export type SingleValuedPiecewise<T> = {
+type SingleValuedPiecewise<T> = {
     kind: "Piecewise",
     value: Piece<T>[]
 };
 
-export type MultivaluedPiecewise<T> = {
+type MultivaluedPiecewise<T> = {
     kind: "MultivaluedPiecewise",
     value: Piece<T>[]
 };
@@ -14,7 +14,7 @@ export type MultivaluedPiecewise<T> = {
 export type Piece<T> = {
     kind: "Piece",
     value: PieceValue<T>,
-    condition: PieceCondition<T>
+    condition: PieceCondition<T>[]
 };
 
 type PieceValue<T> = Expression<T> | Piecewise<T>;
@@ -70,7 +70,9 @@ function evalPieceValue<T>(x: T, value: PieceValue<T>): T[] {
 }
 
 export function evalPiecewise<T>(x: T, piecewise: Piecewise<T>): T[] {
-    const relevantPieces = piecewise.value.filter((piece) => evalPieceCondition(x, piece.condition));
+    const relevantPieces = piecewise.value.filter((piece) =>
+        piece.condition.every((cond) => evalPieceCondition(x, cond))
+    );
 
     let values: T[] = [];
     relevantPieces.forEach((piece) => {
@@ -121,7 +123,13 @@ export function texifyPiecewise<T>(piecewise: Piecewise<T>) {
     piecewise.value.forEach((piece, i) => {
         tex += "\t" + texifyPieceValue(piece.value);
         tex += " & ";
-        tex += texifyPieceCondition(piece.condition);
+        tex += piece.condition.map((cond, j) => {
+            let texCond = texifyPieceCondition(cond);
+            if (j !== piece.condition.length - 1) {
+                texCond += " & ";
+            }
+            return texCond;
+        }).join("");
 
         if (i !== piecewise.value.length - 1) {
             tex += " \\\\\n";

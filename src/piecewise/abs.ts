@@ -11,7 +11,7 @@ export const abs: Piecewise<number> = {
                 value: "x",
                 eval: (x) => x
             },
-            condition: {
+            condition: [{
                 kind: "Interval",
                 value: {
                     kind: "Expression",
@@ -30,7 +30,7 @@ export const abs: Piecewise<number> = {
                 },
                 leftInclusive: true,
                 rightInclusive: false
-            }
+            }]
         },
         {
             kind: "Piece",
@@ -39,7 +39,7 @@ export const abs: Piecewise<number> = {
                 value: "-x",
                 eval: (x) => -x
             },
-            condition: {
+            condition: [{
                 kind: "Interval",
                 value: {
                     kind: "Expression",
@@ -58,7 +58,7 @@ export const abs: Piecewise<number> = {
                 },
                 leftInclusive: false,
                 rightInclusive: true
-            }
+            }]
         },
     ]
 };
