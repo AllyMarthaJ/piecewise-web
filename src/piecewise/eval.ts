@@ -43,7 +43,7 @@ export function evalPiecewise<T>(x: T, piecewise: Piecewise<T>): T[] {
     let values: T[] = [];
     relevantPieces.forEach((piece) => {
         piece.value.forEach((value) => {
-            values = values.concat(evalPieceValue(x, value));
+            values.push(...evalPieceValue(x, value));
         });
     });
 

@@ -49,7 +49,7 @@ function flattenPieceValue<T>(piece: Piece<T>, index: number = 0): Piece<T>[] {
 export function flattenPiecewise<T>(piecewise: Piecewise<T>): Piecewise<T> {
     let pieces: Piece<T>[] = [];
     piecewise.value.forEach((piece) => {
-        pieces = pieces.concat(flattenPieceValue(piece));
+        pieces.push(...flattenPieceValue(piece));
     });
 
     return {
