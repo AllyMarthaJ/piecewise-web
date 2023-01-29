@@ -1,5 +1,9 @@
 import { PieceCondition, PieceValue, Piecewise } from "./piecewise";
 
+// Why not write a basic AST for the stuff we need for piecewise objects?
+// Because I'm lazy. That's why. To be fair, it *would* make testing much
+// easier.
+
 function texify(value: any) {
     return value
         .toString()
