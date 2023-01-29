@@ -32,7 +32,7 @@ type Piece<T> = {
 };
 
 export type PieceValue<T> = Expression<T> | Constant<T> | Piecewise<T>;
-export type PieceCondition<T> = Interval<T>; // TOOD: support piecewise conditions
+export type PieceCondition<T> = Interval<T>;
 
 type Expression<T> = {
     kind: "Expression",
