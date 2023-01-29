@@ -1,4 +1,4 @@
-import { PieceCondition, PieceValue, Piecewise } from "./piecewise";
+import { Piece, PieceCondition, PieceValue, Piecewise } from "./piecewise";
 
 // Why not write a basic AST for the stuff we need for piecewise objects?
 // Because I'm lazy. That's why. To be fair, it *would* make testing much
@@ -42,26 +42,26 @@ function texifyPieceCondition<T>(cond: PieceCondition<T>) {
     return tex;
 }
 
+function texifyPiece<T>(piece: Piece<T>) {
+    let pieceTex = "";
+    if (piece.value.length > 1) {
+        const values = piece.value.map(texifyPieceValue);
+
+        pieceTex = `\\[${values.join(", ")}\\]`;
+    } else {
+        pieceTex = texifyPieceValue(piece.value[0]);
+    }
+
+    pieceTex += " & ";
+    pieceTex += piece.condition.map(texifyPieceCondition).join(" & ");
+
+    return pieceTex;
+}
+
 export function texifyPiecewise<T>(piecewise: Piecewise<T>) {
     let tex = "\\left\\{\\begin{matrix}\n";
 
-    piecewise.value.forEach((piece, i) => {
-        let texValue = "";
-        if (piece.value.length > 1) {
-            const values = piece.value.map((value) => texifyPieceValue);
-
-            texValue = `\\[${values.join(", ")}\\]`;
-        } else {
-            texValue = texifyPieceValue(piece.value[0]);
-        }
-        tex += "\t" + texValue;
-        tex += " & ";
-        tex += piece.condition.map((cond) => texifyPieceCondition(cond)).join(" & ");
-
-        if (i !== piecewise.value.length - 1) {
-            tex += " \\\\\n";
-        }
-    });
+    tex += piecewise.value.map(texifyPiece).join(" \\\\\n");
 
     tex += "\n\\end{matrix}\\right.";
 

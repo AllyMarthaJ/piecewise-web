@@ -25,7 +25,7 @@ type MultivaluedPiecewise<T> = {
  * Any piecewise object can have multiple conditions; they're interpreted
  * as intersections.
  */
-type Piece<T> = {
+export type Piece<T> = {
     kind: "Piece",
     value: PieceValue<T>[],
     condition: PieceCondition<T>[]
