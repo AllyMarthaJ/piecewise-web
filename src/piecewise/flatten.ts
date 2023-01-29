@@ -24,9 +24,7 @@ function flattenSinglePieceValue<T>(piece: Piece<T>, index: number): Piece<T>[] 
 }
 
 function flattenPieceValue<T>(piece: Piece<T>, index: number = 0): Piece<T>[] {
-    let pieces: Piece<T>[] = [];
-
-    pieces.push(...flattenSinglePieceValue(piece, index));
+    let pieces: Piece<T>[] = flattenSinglePieceValue(piece, index);
 
     if (index == piece.value.length - 1) {
         return pieces;
