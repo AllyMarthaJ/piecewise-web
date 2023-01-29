@@ -6,11 +6,11 @@ export const abs: Piecewise<number> = {
     value: [
         {
             kind: "Piece",
-            value: {
+            value: [{
                 kind: "Expression",
                 value: "x",
                 eval: (x) => x
-            },
+            }],
             condition: [{
                 kind: "Interval",
                 value: {
@@ -34,11 +34,11 @@ export const abs: Piecewise<number> = {
         },
         {
             kind: "Piece",
-            value: {
+            value: [{
                 kind: "Expression",
                 value: "-x",
                 eval: (x) => -x
-            },
+            }],
             condition: [{
                 kind: "Interval",
                 value: {

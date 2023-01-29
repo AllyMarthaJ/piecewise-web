@@ -5,11 +5,11 @@ export const doubleRamp: Piecewise<number> = {
     value: [
         {
             kind: "Piece",
-            value: {
+            value: [{
                 kind: "Expression",
                 value: "-x - 1",
                 eval: (x) => -x-1
-            },
+            }],
             condition: [{
                 kind: "Interval",
                 value: {
@@ -33,16 +33,16 @@ export const doubleRamp: Piecewise<number> = {
         },
         {
             kind: "Piece",
-            value: {
+            value: [{
                 kind: "Piecewise",
                 value: [
                     {
                         kind: "Piece",
-                        value: {
+                        value: [{
                             kind: "Expression",
                             value: "0",
                             eval: (x) => 0,
-                        },
+                        }],
                         condition: [{
                             kind: "Interval",
                             value: {
@@ -66,11 +66,11 @@ export const doubleRamp: Piecewise<number> = {
                     },
                     {
                         kind: "Piece",
-                        value: {
+                        value: [{
                             kind: "Expression",
                             value: "x - 1",
                             eval: (x) => x - 1
-                        },
+                        }],
                         condition: [{
                             kind: "Interval",
                             value: {
@@ -93,7 +93,7 @@ export const doubleRamp: Piecewise<number> = {
                         }]
                     }
                 ]
-            },
+            }],
             condition: [{
                 kind: "Interval",
                 value: {
