@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import { doubleRamp } from './piecewise/doubleRamp';
-import { abs } from './piecewise/abs';
+import { doubleRamp } from './piecewise/examples/doubleRamp';
+import { abs } from './piecewise/examples/abs';
 import { MathJax, MathJaxContext } from "better-react-mathjax";
 import { evalPiecewise } from './piecewise/eval';
 import { texifyPiecewise } from './piecewise/texify';
