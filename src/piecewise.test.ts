@@ -58,14 +58,14 @@ describe("piecewise#evalPiecewise", () => {
 });
 
 describe("piecewise#texifyPiecewise", () => {
-    describe("with the absolute value function", () => {
+    it("with the absolute value function", () => {
         const noWhitespaceTex = texifyPiecewise(abs).replace(/\s/g, "");
 
         expect(noWhitespaceTex).toContain("x&x\\in\\left[0,\\infty\\right)");
         expect(noWhitespaceTex).toContain("-x&x\\in\\left(-\\infty,0\\right]");
     });
 
-    describe("with the double ramp function", () => {
+    it("with the double ramp function", () => {
         const noWhitespaceTex = texifyPiecewise(doubleRamp).replace(/\s/g, "");
 
         expect(noWhitespaceTex).toContain("-x-1&x\\in\\left(-\\infty,-1\\right]");
