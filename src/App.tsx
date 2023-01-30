@@ -6,7 +6,7 @@ import { MathJax, MathJaxContext } from "better-react-mathjax";
 import { evalPiecewise } from './piecewise/eval';
 import { texifyPiecewise } from './piecewise/texify';
 import { flattenPiecewise } from './piecewise/flatten';
-import { _flattenedDoubleRamp } from './piecewise/examples/_flattenedDoubleRamp';
+import { _flattenedDoubleRamp } from './piecewise/tests/_flattenedDoubleRamp';
 
 function App() {
   return (

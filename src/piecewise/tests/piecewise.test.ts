@@ -1,9 +1,9 @@
-import { abs } from "./piecewise/examples/abs";
-import { doubleRamp } from "./piecewise/examples/doubleRamp";
-import { evalPiecewise } from "./piecewise/eval";
-import { texifyPiecewise } from "./piecewise/texify";
-import { flattenPiecewise } from "./piecewise/flatten";
-import { _flattenedDoubleRamp } from "./piecewise/examples/_flattenedDoubleRamp";
+import { abs } from "../examples/abs";
+import { doubleRamp } from "../examples/doubleRamp";
+import { evalPiecewise } from "../eval";
+import { texifyPiecewise } from "../texify";
+import { flattenPiecewise } from "../flatten";
+import { _flattenedDoubleRamp } from "./_flattenedDoubleRamp";
 
 describe("piecewise#evalPiecewise", () => {
     describe("with the absolute value function", () => {
