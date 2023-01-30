@@ -11,12 +11,12 @@ function flattenSinglePieceValue<T>(piece: Piece<T>, index: number): Piece<T>[] 
         case "MultivaluedPiecewise":
             const subPiecewise = flattenPiecewise(value);
             return subPiecewise.value.map((subPiece) => {
-                const left = piece.value.slice(0, index);
-                const right = piece.value.slice(index + 1);
+                const pieces = [...piece.value];
+                pieces.splice(index, 1, ...subPiece.value);
 
                 return {
                     ...subPiece,
-                    value: [...left, ...subPiece.value, ...right],
+                    value: pieces,
                     condition: subPiece.condition.concat(piece.condition)
                 };
             });
