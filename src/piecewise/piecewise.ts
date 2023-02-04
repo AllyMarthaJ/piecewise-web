@@ -5,8 +5,8 @@ export type Piecewise<T> = SingleValuedPiecewise<T> | MultivaluedPiecewise<T>;
  * return a single value where specified (this should be the default).
  */
 type SingleValuedPiecewise<T> = {
-    kind: "Piecewise",
-    value: Piece<T>[]
+	kind: "Piecewise";
+	value: Piece<T>[];
 };
 
 /**
@@ -14,8 +14,8 @@ type SingleValuedPiecewise<T> = {
  * as multivalued piecewise objects.
  */
 type MultivaluedPiecewise<T> = {
-    kind: "MultivaluedPiecewise",
-    value: Piece<T>[]
+	kind: "MultivaluedPiecewise";
+	value: Piece<T>[];
 };
 
 /**
@@ -25,9 +25,9 @@ type MultivaluedPiecewise<T> = {
  * as intersections.
  */
 export type Piece<T> = {
-    kind: "Piece",
-    value: PieceValue<T>[],
-    condition: PieceCondition<T>[]
+	kind: "Piece";
+	value: PieceValue<T>[];
+	condition: PieceCondition<T>[];
 };
 
 export type PieceValue<T> = Expression<T> | Constant<T> | Piecewise<T>;
@@ -38,14 +38,14 @@ export type PieceCondition<T> = Interval<T>;
  * state), and an evaluation function.
  */
 type Expression<T> = {
-    kind: "Expression",
-    value: string,
-    eval: ((value: T) => T)
+	kind: "Expression";
+	value: string;
+	eval: (value: T) => T;
 };
 
 type Constant<T> = {
-    kind: "Constant",
-    value: T
+	kind: "Constant";
+	value: T;
 };
 
 /**
@@ -54,10 +54,10 @@ type Constant<T> = {
  * whether the the min/max exists in the set, respectively.
  */
 type Interval<T> = {
-    kind: "Interval",
-    value: PieceValue<T>,
-    inf: PieceValue<T>,
-    sup: PieceValue<T>,
-    hasMin: boolean,
-    hasMax: boolean,
+	kind: "Interval";
+	value: PieceValue<T>;
+	inf: PieceValue<T>;
+	sup: PieceValue<T>;
+	hasMin: boolean;
+	hasMax: boolean;
 };
