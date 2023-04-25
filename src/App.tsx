@@ -8,6 +8,7 @@ import { texifyPiecewise } from "./piecewise/texify";
 import { flattenPiecewise } from "./piecewise/flatten";
 import { _flattenedDoubleRamp } from "./piecewise/tests/_flattenedDoubleRamp";
 import { doubleRampContrived } from "./piecewise/examples/doubleRampContrived";
+import { simplifyPiecewise } from "./piecewise/simplify";
 
 function App() {
 	return (
@@ -27,8 +28,20 @@ function App() {
 
 			<MathJaxContext>
 				<MathJax>
+					{"$$" + texifyPiecewise(doubleRampContrived) + "$$"}
+				</MathJax>
+				<MathJax>
 					{"$$" +
 						texifyPiecewise(flattenPiecewise(doubleRampContrived)) +
+						"$$"}
+				</MathJax>
+				<MathJax>
+					{"$$" +
+						texifyPiecewise(
+							simplifyPiecewise(
+								flattenPiecewise(doubleRampContrived)
+							)
+						) +
 						"$$"}
 				</MathJax>
 			</MathJaxContext>

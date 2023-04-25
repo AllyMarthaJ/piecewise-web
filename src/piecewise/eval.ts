@@ -1,6 +1,80 @@
 import { PieceCondition, PieceValue, Piecewise } from "./piecewise";
 
-function evalPieceCondition<T>(x: T, cond: PieceCondition<T>): boolean {
+function sup<T>(...items: T[]): T {
+	if (items.length === 0) {
+		throw new Error("No elements supplied to sup function");
+	}
+	let curEl = items[0];
+	items.forEach((el) => {
+		if (el > curEl) {
+			curEl = el;
+		}
+	});
+	return curEl;
+}
+function inf<T>(...items: T[]): T {
+	if (items.length === 0) {
+		throw new Error("No elements supplied to sup function");
+	}
+	let curEl = items[0];
+	items.forEach((el) => {
+		if (el < curEl) {
+			curEl = el;
+		}
+	});
+	return curEl;
+}
+
+export function evalIntervalIntersection<T>(
+	intA: PieceCondition<T>,
+	intB: PieceCondition<T>
+): PieceCondition<T>[] {
+	if (intA.kind !== "Interval" || intB.kind !== "Interval") {
+		throw new Error("Can't evaluate the intersection of non-interval");
+	}
+	if (
+		intA.inf.kind !== "Constant" ||
+		intA.sup.kind !== "Constant" ||
+		intB.inf.kind !== "Constant" ||
+		intB.sup.kind !== "Constant"
+	) {
+		throw new Error("Can't evaluate non-constant bounds");
+	}
+	if (intA.inf.value > intB.sup.value || intB.inf.value > intA.sup.value) {
+		return [];
+	}
+	if (JSON.stringify(intA.value) != JSON.stringify(intB.value)) {
+		// Can't do complex evals yet.
+		return [intA, intB];
+	}
+
+	const newInf = sup(intA.inf.value, intB.inf.value);
+	const newSup = inf(intA.sup.value, intB.sup.value);
+
+	const hasMin =
+		evalPieceCondition(newInf, intA) && evalPieceCondition(newInf, intB);
+	const hasMax =
+		evalPieceCondition(newSup, intA) && evalPieceCondition(newSup, intB);
+
+	return [
+		{
+			kind: "Interval",
+			value: intA.value,
+			inf: {
+				kind: "Constant",
+				value: newInf,
+			},
+			sup: {
+				kind: "Constant",
+				value: newSup,
+			},
+			hasMin,
+			hasMax,
+		},
+	];
+}
+
+export function evalPieceCondition<T>(x: T, cond: PieceCondition<T>): boolean {
 	switch (cond.kind) {
 		case "Interval":
 			const targetValues = evalPieceValue(x, cond.value);

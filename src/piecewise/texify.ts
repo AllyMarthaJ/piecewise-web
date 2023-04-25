@@ -21,7 +21,7 @@ function texifyPieceValue<T>(value: PieceValue<T>): string {
 	}
 }
 
-function texifyPieceCondition<T>(cond: PieceCondition<T>) {
+export function texifyPieceCondition<T>(cond: PieceCondition<T>) {
 	let tex = "";
 
 	switch (cond.kind) {

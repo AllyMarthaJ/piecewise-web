@@ -1,4 +1,4 @@
-import { Piece, PieceCondition, PieceValue, Piecewise } from "./piecewise";
+import { Piece, Piecewise } from "./piecewise";
 
 const intervalProp = { value: null, inf: null, sup: null };
 const _intervalPropValues = Object.keys(intervalProp);
@@ -133,7 +133,6 @@ function flattenPieceValue<T>(piece: Piece<T>, index: number = 0): Piece<T>[] {
 }
 
 export function flattenPiecewise<T>(piecewise: Piecewise<T>): Piecewise<T> {
-	console.log(piecewise);
 	let valuePieces: Piece<T>[] = [];
 	piecewise.value.forEach((piece) => {
 		valuePieces.push(...flattenPieceValue(piece));
